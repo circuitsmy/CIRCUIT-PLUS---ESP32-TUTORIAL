@@ -92,3 +92,79 @@ int button = digitalRead(21);
 ![EXF1](https://user-images.githubusercontent.com/60383798/109626876-fbc33400-7b7b-11eb-9b8c-59760f3e54d1.PNG)
 
 
+
+# EXERCISE 2 :  BUZZER (ON/OFF)
+
+In this exercise, we will use the Buzzer on the board as output where we will program the buzzer ON/OFF with milis() function.
+
+## Wiring Diagram
+
+1. Connect the wiring on following the wiring diagram below.
+
+![ex2](https://user-images.githubusercontent.com/60383798/109628525-cddeef00-7b7d-11eb-969f-ae3466fe89ed.png)
+
+2. Type this following code and upload to the board.
+
+```C
+const int buzzer = 26; // declaring buzzer GPIO pin
+int buzzerState = LOW;  // declaring the initial state for buzzer
+
+//use unsigned long for a variables that hold time
+unsigned long previousMilis = 0;  // update time from previous
+const long interval = 1000;  // interval time to buzzer beep 1 second
+
+void setup() {
+  pinMode(buzzer, OUTPUT); // declaring Buzzer as an OUTPUT
+}
+
+void loop() {
+
+Unsigned long currentMilis = milis();
+  if (currentMilis – previousMilis >= interval){
+	previousMilis = currentMilis;
+	 
+  if (buzzerState == LOW) {
+	buzzerState = HIGH;
+  } else  {
+    	buzzerState = LOW;
+  }
+
+	digitalWrite(buzzer, buzzerState);
+ }
+}
+```
+
+## Sketch Explanations
+
+The buzzer is declared to the 26 GPIO pin. For initial state of the buzzer it should be LOW means no action/ring. 
+
+```Bash
+const int buzzer = 26; // declaring buzzer GPIO pin
+int buzzerState = LOW;  // declaring the initial state for buzzer
+```	
+Then we declare variable previousMilis to the initial state and interval for the previousMilis to the currentMilis is set to be 1 second.
+
+```Bash
+unsigned long previousMilis = 0;  // update time from previous
+const long interval = 1000;  // interval time to buzzer beep 1 second
+```	
+In the loop function we want to the interval keep the previousMilis and currentMilis to be 0 second to 1 second and looping whitihn the interval so the buzzer will beep ON and OFF like an alarm sound.
+
+```Bash
+Unsigned long currentMilis = milis();
+  if (currentMilis – previousMilis >= interval){
+	previousMilis = currentMilis;
+	 
+  if (buzzerState == LOW) {
+	buzzerState = HIGH;
+  } else  {
+    	buzzerState = LOW;
+  }
+
+	digitalWrite(buzzer, buzzerState);
+```
+
+## Flowchart Explanation
+
+![exf2](https://user-images.githubusercontent.com/60383798/109629101-755c2180-7b7e-11eb-8ad0-65a20187a32b.PNG)
+
