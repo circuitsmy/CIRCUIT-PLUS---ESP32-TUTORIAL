@@ -6,7 +6,7 @@ Before we start to program using the ESP32 on the Circuits+ board, we will learn
  
 First of all, In this board, the ESP32 used its own pins called GPIO Pins. The ESP32 has 18 x 12 bits Analog – Digital Converter (ADC) input channels. These are the GPIOs that can be used as ADC and respective channels. It has Input components which are USB connectors, MicroSD reader, Buttons, Potentiometer, DHT11 and LDR as well as output components LEDs, and Buzzer. We will program these I/O components later. But first, let’s learn about the GPIO setup for ESP32.
 
-![CP](https://user-images.githubusercontent.com/60383798/109624171-da147d80-7b78-11eb-8482-00507ddaa1cc.png)
+![circuitsPlus_label (1)](https://user-images.githubusercontent.com/60383798/109744207-dcc0b280-7c0c-11eb-9956-db41b67df5ac.png)
 
 ## How to set the GPIO pin as Output?
 
@@ -371,7 +371,8 @@ delay(2000);  //delay 2 second
 
 ## Flowchart Explanation
 
-![exp4](https://user-images.githubusercontent.com/60383798/109743918-70de4a00-7c0c-11eb-8ee7-89f7c06cc01c.PNG)
+![ex5f](https://user-images.githubusercontent.com/60383798/109744118-c0247a80-7c0c-11eb-964b-dac57e10941f.PNG)
+
 
 
 
