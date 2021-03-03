@@ -162,9 +162,216 @@ Unsigned long currentMilis = milis();
   }
 
 	digitalWrite(buzzer, buzzerState);
+	!
+
 ```
 
 ## Flowchart Explanation
 
-![exf2](https://user-images.githubusercontent.com/60383798/109629101-755c2180-7b7e-11eb-8ad0-65a20187a32b.PNG)
+![exf](https://user-images.githubusercontent.com/60383798/109741182-84d37d00-7c07-11eb-8d7c-4c2221ada527.PNG)
+
+
+# EXERCISE 3 :  Potentiometer - LED  ( Dim - Bright ) 
+
+In this exercise, we will use the Potentiometer as input on the board and LED as output where we will program the potentiometer to control the LED brightness from Dim to Bright or vice-versa.
+
+## Wiring Diagram
+
+1. Connect the wiring as the following wiring diagram
+
+![ex3](https://user-images.githubusercontent.com/60383798/109740314-0c1ff100-7c06-11eb-92e8-b7f73cdcca89.png)
+
+2. Type this following code and upload to the board.
+
+```C
+int LED_PIN = 23;  // declaring LED pin GPIO
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
+  pinMode(21, INPUT); // declaring GPIO21 -as an INPUT pin.
+}
+
+void loop() {
+  // put the main code here, to run repeated
+	 int potentioValue = analogRead(21); //read the input potentio value
+
+  int brightness = map(potentioValue, 0, 1023, 0, 255);
+ //scale the brightness from 0 to 255
+
+  delay (100); // delay 0.1 second
+}
+
+```
+
+
+## Sketch Explanations
+
+The LED is declare using LED_PIN variable to GPIO23 pin.
+
+```Bash
+int LED_PIN = 23;  // declaring LED pin GPIO
+```
+Then, in void setup() function we declare pin 23 which the LED as OUTPUT and pin 21 for the potentiometer as the INPUT.
+
+```Bash
+pinMode(LED_PIN, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
+pinMode(21, INPUT); // declaring GPIO21 -as an INPUT pin.
+```
+
+In the void loop() function we set a variable name potentioValue to analogRead() function where it is the same as digitalRead() function and the different is we use analog instead of digital because potentiometer is analog components. Then, we declare another variable name brightness, where it scale the value from the 0 to 255 as the common brightness of a LED. We add delay to see the changes when you rotate the potentiometer.
+
+```Bash
+int potentioValue = analogRead(21); //read the input potentiometer value
+
+int brightness = map(potentioValue, 0, 1023, 0, 255);
+//scale the brightness from 0 to 255
+
+delay (100); // delay 0.1 second
+```
+
+## Flowchart Explanation
+
+![ex3f](https://user-images.githubusercontent.com/60383798/109740714-b0a23300-7c06-11eb-8b31-eeaec5864f3e.PNG)
+
+
+# EXERCISE 4 :  LDR - Buzzer  ( Light Sensor ) 
+
+In this exercise, we will use the LDR and Buzzer, where when the LDR is blocked to the light 	and the buzzer will ringing and stop ringing when it exposed to the light.
+
+## Wiring Diagram
+
+1. Connect the wiring as the following wiring diagram
+
+2. Type this following code and upload to the board.
+
+```C
+const int Buzzer = 21;  // declaring Buzzer pin GPIO
+const int LDR = 23;  // declaring ldr pin GPIO
+
+void setup() 
+  pinMode(Buzzer, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
+  pinMode(LDR, INPUT); // declaring GPIO21 -as an INPUT pin.
+  
+}
+
+void loop() {
+  // put the main code here, to run repeated
+	 int ldrStatus = analogRead(21); //read the ldr status
+
+  if (ldrStatus>= 100) {
+	    tone(Buzzer,100);
+	    delay(100);
+
+	    noTone(Buzzer);
+	    delay(100);
+  }
+  else {
+	    noTone(Buzzer);
+    	    delay(1000);
+	}
+}
+```
+
+## Sketch Explanations
+
+The buzzer and LDR are declared for each GPIO pin using variable int.
+
+```Bash
+const int Buzzer = 21;  // declaring Buzzer pin GPIO
+const int LDR = 23;  // declaring ldr pin GPIO
+```
+Then, we declare the Buzzer as OUTPUT and LDR as INPUT.
+
+```Bash
+pinMode(Buzzer, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
+pinMode(LDR, INPUT); // declaring GPIO21 -as an INPUT pin.
+```
+We use analogRead() to read the ldrStatus. Where, when the LDR measure the intensity of the light it received. We use if-else statement to determine the condition where the ldrStatus 	reach >=100 and the buzzer will beep and go off for each 0,1 second gap. We use tone and noTone fuction to make the buzzer on and off with the delay. If ldrStatus <=100, then the buzzer will remain off state.
+	
+## Flowchart Explanation
+
+![exp4](https://user-images.githubusercontent.com/60383798/109742682-79ce1c00-7c0a-11eb-80c8-5f007f8ef25b.PNG)
+
+# EXERCISE 5 :   DHT11 (Temperature and Humidity Sensor)
+
+In this exercise, we will use the DHT11 sensor to measure the temperature and humidity of 	the surrounding. To monitor the reading, we will use serial monitor on your Arduino IDE. 
+
+## Wiring Diagram 
+
+1. Connect the wiring as the following wiring diagram
+
+2. Type this following code and upload to the board.
+
+```C
+#include “DHT11”  // use the DHT11 library
+#define DHTPIN 4     // set to dht pin to GPIO 4
+#define DHTTYPE DHT11  // we use DHT11 types of DHT sensor
+
+DHT dht( DHTPIN, DHTTYPE);  // for grouping the dht element
+
+void setup() {
+
+  Serial.begin(9600); // we set the serial to 9600 baud rate
+  Serial.println(“DHT test”); // printed in the serial monitor
+  dht.begin(); //dht startup
+}
+
+void loop() {
+  // sensor reading
+	 float h = dht.readHumidity();  //read humidity function
+  float t = dht.readTemperature();  //read temperature function
+
+  Serial.println(“Humidity :”);  // print line
+  Serial.println(h);  // print value h
+  Serial.println(“Temperature :”); // print line
+  Serial.println(t);  // print value t
+  
+  delay(2000);  //delay 2 second
+	
+       }
+```
+
+
+## Sketch Explanations
+
+We used #include when we use the Arduino library and the syntax must be “.h” as in 	DHT.h. We use #define to define the element. In this case we define DHTPIN and 	DHTTYPES and then we grouping this in a single special variable name DHT.
+
+```Bash
+#include “DHT11”  // use the DHT11 library
+#define DHTPIN 4     // set to dht pin to GPIO 4
+#define DHTTYPE DHT11  // we use DHT11 types of DHT sensor
+
+DHT dht( DHTPIN, DHTTYPE);  // for grouping the dht element
+```
+
+Next, in setup() we use Serial.begin as a syntax for using the serial monitor. We use 	Serial.println to print message or to return a value to display on the serial monitor. 
+
+```Bash
+Serial.begin(9600); // we set the serial to 9600 baud rate
+Serial.println(“DHT test”); // printed in the serial monitor
+dht.begin(); //dht startup
+```
+
+
+
+In loop() function, we use float data types which represent a point or decimal value since the 	humidity and temperature will be measure in point value. We use dht.read to read both 	humidity and temperature. Then we display the measured value using Serial.println. The 	delay is to set the sensor to update measurement for each 2 second.
+
+
+```Bash
+float h = dht.readHumidity();  //read humidity function
+float t = dht.readTemperature();  //read temperature function
+
+Serial.println(“Humidity :”);  // print line
+Serial.println(h);  // print value h
+Serial.println(“Temperature :”); // print line
+Serial.println(t);  // print value t
+  
+delay(2000);  //delay 2 second
+```
+
+## Flowchart Explanation
+
+![exp4](https://user-images.githubusercontent.com/60383798/109743918-70de4a00-7c0c-11eb-8ee7-89f7c06cc01c.PNG)
+
+
 
