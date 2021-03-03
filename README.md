@@ -47,7 +47,7 @@ In this exercise, we will use the LED on the board as output and Button as Input
 
  1. Connect the wiring as the following wiring diagram
 
-![cp1](https://user-images.githubusercontent.com/60383798/109745913-7db06d00-7c0f-11eb-8e90-9a214afc1dc7.PNG)
+![EX1](https://user-images.githubusercontent.com/60383798/109749822-57420000-7c16-11eb-96fc-c884cee1446f.png)
 
  2. Type this following code and upload to the board.
  
@@ -91,8 +91,6 @@ int button = digitalRead(21);
 
 ![EXF1](https://user-images.githubusercontent.com/60383798/109626876-fbc33400-7b7b-11eb-9b8c-59760f3e54d1.PNG)
 
-
-
 # EXERCISE 2 :  BUZZER (ON/OFF)
 
 In this exercise, we will use the Buzzer on the board as output where we will program the buzzer ON/OFF with milis() function.
@@ -101,7 +99,7 @@ In this exercise, we will use the Buzzer on the board as output where we will pr
 
 1. Connect the wiring on following the wiring diagram below.
 
-![ex2](https://user-images.githubusercontent.com/60383798/109628525-cddeef00-7b7d-11eb-969f-ae3466fe89ed.png)
+![EX2](https://user-images.githubusercontent.com/60383798/109749792-4b563e00-7c16-11eb-8d4d-a027563919eb.png)
 
 2. Type this following code and upload to the board.
 
@@ -179,7 +177,7 @@ In this exercise, we will use the Potentiometer as input on the board and LED as
 
 1. Connect the wiring as the following wiring diagram
 
-![ex3](https://user-images.githubusercontent.com/60383798/109740314-0c1ff100-7c06-11eb-92e8-b7f73cdcca89.png)
+![EX3](https://user-images.githubusercontent.com/60383798/109749859-645eef00-7c16-11eb-9a06-d5dd04b4d193.png)
 
 2. Type this following code and upload to the board.
 
@@ -242,6 +240,8 @@ In this exercise, we will use the LDR and Buzzer, where when the LDR is blocked 
 
 1. Connect the wiring as the following wiring diagram
 
+![EX4](https://user-images.githubusercontent.com/60383798/109749901-717bde00-7c16-11eb-832f-929a2273e581.png)
+
 2. Type this following code and upload to the board.
 
 ```C
@@ -299,6 +299,8 @@ In this exercise, we will use the DHT11 sensor to measure the temperature and hu
 ## Wiring Diagram 
 
 1. Connect the wiring as the following wiring diagram
+
+![EX5](https://user-images.githubusercontent.com/60383798/109749922-793b8280-7c16-11eb-9ecd-a71fbbaeb6c4.png)
 
 2. Type this following code and upload to the board.
 
