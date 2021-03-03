@@ -47,7 +47,7 @@ In this exercise, we will use the LED on the board as output and Button as Input
 
  1. Connect the wiring as the following wiring diagram
 
-![new1](https://user-images.githubusercontent.com/60383798/109745176-6fae1c80-7c0e-11eb-85bd-4de9b2c4908a.PNG)
+![exd1](https://user-images.githubusercontent.com/60383798/109745510-f105af00-7c0e-11eb-9d63-607ed7e6a241.png)
 
  2. Type this following code and upload to the board.
  
