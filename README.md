@@ -10,13 +10,13 @@ First of all, In this board, the ESP32 used its own pins called GPIO Pins. The E
 
 ## How to set the GPIO pin as Output?
 
-*	First, you need to set the GPIO you want to control as an OUTPUT. Use the pinMode() function as follows:
+* First, you need to set the GPIO you want to control as an OUTPUT. Use the pinMode() function as follows:
 
 ```Bash
   pinMode(GPIO, OUTPUT);	Example : pinMode( 4, OUTPUT);
 ```
 
-*	To control a digital output you just need to use the digitalWrite() function, that accepts as arguments, the GPIO (int number) you are referring to, and the state, either HIGH or LOW.
+* To control a digital output you just need to use the digitalWrite() function, that accepts as arguments, the GPIO (int number) you are referring to, and the state, either HIGH or LOW.
 
 
 ```Bash
@@ -25,13 +25,13 @@ First of all, In this board, the ESP32 used its own pins called GPIO Pins. The E
 
 ## How to set the GPIO pin as Input?
  
-*	First, set the GPIO you want to read as INPUT, using the pinMode() function as follows:
+* First, set the GPIO you want to read as INPUT, using the pinMode() function as follows:
 
 ```Bash
   pinMode(GPIO, INPUT);	Example : pinMode(4, INPUT);
 ```  
 
-*	To read a digital input, like a button, you use the digitalRead() function, that accepts as argument, the GPIO (int number) you are referring to.
+* To read a digital input, like a button, you use the digitalRead() function, that accepts as argument, the GPIO (int number) you are referring to.
 
 ```Bash
   digitalRead(GPIO);	Example : digitalRead(4);
@@ -47,7 +47,7 @@ In this exercise, we will use the LED on the board as output and Button as Input
 
  1. Connect the wiring as the following wiring diagram
 
-![EX1](https://user-images.githubusercontent.com/60383798/109625536-63787f80-7b7a-11eb-94ee-35d2d4c30514.png)
+![new1](https://user-images.githubusercontent.com/60383798/109745176-6fae1c80-7c0e-11eb-85bd-4de9b2c4908a.PNG)
 
  2. Type this following code and upload to the board.
  
