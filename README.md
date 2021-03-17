@@ -182,21 +182,26 @@ In this exercise, we will use the Potentiometer as input on the board and LED as
 2. Type this following code and upload to the board.
 
 ```C
-int LED_PIN = 23;  // declaring LED pin GPIO
+const int POTENTIOMETER_PIN   = 34; // Arduino pin connected to Potentiometer pin
+const int LED_PIN          = 16; // Arduino pin connected to LED pin
+const float VOLTAGE_THRESHOLD = 2.5; // Voltages
 
 void setup() {
-  pinMode(LED_PIN, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
-  pinMode(21, INPUT); // declaring GPIO21 -as an INPUT pin.
+  pinMode(LED_PIN, OUTPUT); // set arduino pin to output mode
 }
 
 void loop() {
-  // put the main code here, to run repeated
-	 int potentioValue = analogRead(21); //read the input potentio value
+  int analogValue = analogRead(POTENTIOMETER_PIN);      // read the input on analog pin
+  float voltage = floatMap(analogValue, 0, 1023, 0, 255); // Rescale to potentiometer's voltage
 
-  int brightness = map(potentioValue, 0, 1023, 0, 255);
- //scale the brightness from 0 to 255
+  if(voltage > VOLTAGE_THRESHOLD)
+    digitalWrite(LED_PIN, HIGH); // turn on LED
+  else
+    digitalWrite(LED_PIN, LOW);  // turn off LED
+}
 
-  delay (100); // delay 0.1 second
+float floatMap(float x, float in_min, float in_max, float out_min, float out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
 ```
