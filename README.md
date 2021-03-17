@@ -328,32 +328,43 @@ In this exercise, we will use the DHT11 sensor to measure the temperature and hu
 2. Type this following code and upload to the board.
 
 ```C
-#include “DHT11”  // use the DHT11 library
-#define DHTPIN 4     // set to dht pin to GPIO 4
-#define DHTTYPE DHT11  // we use DHT11 types of DHT sensor
+#include "DHT.h"
 
-DHT dht( DHTPIN, DHTTYPE);  // for grouping the dht element
+#define DHTPIN 4     // what digital pin we're connected to
+
+// Uncomment whatever type you're using!
+#define DHTTYPE DHT11   // DHT 11
+//#define DHTTYPE DHT22   // DHT 22  (AM2302), AM2321
+//#define DHTTYPE DHT21   // DHT 21 (AM2301)
+
+DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
-
-  Serial.begin(9600); // we set the serial to 9600 baud rate
-  Serial.println(“DHT test”); // printed in the serial monitor
-  dht.begin(); //dht startup
+  Serial.begin(9600);
+  Serial.println("DHTxx test!");
+  dht.begin();
 }
 
 void loop() {
-  // sensor reading
-	 float h = dht.readHumidity();  //read humidity function
-  float t = dht.readTemperature();  //read temperature function
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float h = dht.readHumidity();
+  // Read temperature as Celsius
+  float t = dht.readTemperature();
 
-  Serial.println(“Humidity :”);  // print line
-  Serial.println(h);  // print value h
-  Serial.println(“Temperature :”); // print line
-  Serial.println(t);  // print value t
-  
-  delay(2000);  //delay 2 second
-	
-       }
+  // Check if any reads failed and exit early (to try again).
+  if (isnan(h) || isnan(t)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+  Serial.print("Humidity: ");
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperature: ");
+  Serial.print(t);
+  Serial.println(" Celcius ");
+  // Wait a few seconds between measurements.
+  delay(2000);
+}
 ```
 
 
@@ -377,21 +388,30 @@ Serial.println(“DHT test”); // printed in the serial monitor
 dht.begin(); //dht startup
 ```
 
-
-
 In loop() function, we use float data types which represent a point or decimal value since the 	humidity and temperature will be measure in point value. We use dht.read to read both 	humidity and temperature. Then we display the measured value using Serial.println. The 	delay is to set the sensor to update measurement for each 2 second.
 
 
 ```Bash
-float h = dht.readHumidity();  //read humidity function
-float t = dht.readTemperature();  //read temperature function
+void loop() {
+  // Sensor readings may also be up to 2 seconds 'old' (its a very slow sensor)
+  float h = dht.readHumidity();
+  // Read temperature as Celsius
+  float t = dht.readTemperature();
 
-Serial.println(“Humidity :”);  // print line
-Serial.println(h);  // print value h
-Serial.println(“Temperature :”); // print line
-Serial.println(t);  // print value t
-  
-delay(2000);  //delay 2 second
+  // Check if any reads failed and exit early (to try again).
+  if (isnan(h) || isnan(t)) {
+    Serial.println("Failed to read from DHT sensor!");
+    return;
+  }
+  Serial.print("Humidity: ");
+  Serial.print(h);
+  Serial.print(" %\t");
+  Serial.print("Temperature: ");
+  Serial.print(t);
+  Serial.println(" Celcius ");
+  // Wait a few seconds between measurements.
+  delay(2000);
+}
 ```
 
 ## Flowchart Explanation
