@@ -177,7 +177,7 @@ In this exercise, we will use the Potentiometer as input on the board and LED as
 
 1. Connect the wiring as the following wiring diagram
 
-![EX2](https://user-images.githubusercontent.com/60383798/109749792-4b563e00-7c16-11eb-8d4d-a027563919eb.png)
+![EX3](https://user-images.githubusercontent.com/60383798/111412372-482f7780-8717-11eb-8dba-31238512d517.png)
 
 2. Type this following code and upload to the board.
 
