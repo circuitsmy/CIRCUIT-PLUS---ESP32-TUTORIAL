@@ -209,28 +209,35 @@ float floatMap(float x, float in_min, float in_max, float out_min, float out_max
 
 ## Sketch Explanations
 
-The LED is declare using LED_PIN variable to GPIO23 pin.
+The LED is declare using LED_PIN variable to GPIO16 pin and pin 34 for the potentiometer as the INPUT. The VOLTAGE_THRESHOLD set the voltage to 2.5 set boundaries for the LED to turn on or turn off
 
 ```Bash
-int LED_PIN = 23;  // declaring LED pin GPIO
+const int POTENTIOMETER_PIN   = 34; // Arduino pin connected to Potentiometer pin
+const int LED_PIN          = 16; // Arduino pin connected to LED pin
+const float VOLTAGE_THRESHOLD = 2.5; // Voltages
 ```
-Then, in void setup() function we declare pin 23 which the LED as OUTPUT and pin 21 for the potentiometer as the INPUT.
+In the void setup() the led is declare as OUTPUt
 
 ```Bash
-pinMode(LED_PIN, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
-pinMode(21, INPUT); // declaring GPIO21 -as an INPUT pin.
+void setup() {
+  pinMode(LED_PIN, OUTPUT); // set arduino pin to output mode
+}
 ```
 
-In the void loop() function we set a variable name potentioValue to analogRead() function where it is the same as digitalRead() function and the different is we use analog instead of digital because potentiometer is analog components. Then, we declare another variable name brightness, where it scale the value from the 0 to 255 as the common brightness of a LED. We add delay to see the changes when you rotate the potentiometer.
+In the void loop() function we use analog syntax as the potentiometer is a analog device. Variable name voltage keep the analog value (0, 1023, 0, 255) indicate that when you turn the potentiometer, the analog value mark the condition.
 
 ```Bash
-int potentioValue = analogRead(21); //read the input potentiometer value
-
-int brightness = map(potentioValue, 0, 1023, 0, 255);
-//scale the brightness from 0 to 255
-
-delay (100); // delay 0.1 second
+void loop() {
+  int analogValue = analogRead(POTENTIOMETER_PIN);      // read the input on analog pin
+  float voltage = floatMap(analogValue, 0, 1023, 0, 255); // Rescale to potentiometer's voltage
 ```
+With the statement if-else, when the voltage is more that threshold voltage, then the led will turn ON, otherwise it will be off
+
+```Bash
+float floatMap(float x, float in_min, float in_max, float out_min, float out_max) {
+  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+```
+This is the variable floatmap operational that set the statement condition. 
 
 ## Flowchart Explanation
 
