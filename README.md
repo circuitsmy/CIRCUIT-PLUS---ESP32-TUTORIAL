@@ -419,7 +419,7 @@ void loop() {
 ![ex5f](https://user-images.githubusercontent.com/60383798/109744118-c0247a80-7c0c-11eb-964b-dac57e10941f.PNG)
 
 
-# EXERCISE 6 :   DHT11 (Temperature and Humidity Datalog using SD Card)
+## EXERCISE 6 :   DHT11 (Temperature and Humidity Datalog using SD Card)
 
 in this exercise, we will use SD Card to store the data from the DHT11 sensor in a txt file.
 
@@ -569,6 +569,6 @@ void appendFile(fs::FS &fs, const char * path, const char * message) {
 }
 ```
 
-# Coding Explaination
+## Coding Explaination
 
 
