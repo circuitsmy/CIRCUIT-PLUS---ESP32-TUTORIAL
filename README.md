@@ -257,31 +257,42 @@ In this exercise, we will use the LDR and Buzzer, where when the LDR is blocked 
 2. Type this following code and upload to the board.
 
 ```C
-const int Buzzer = 21;  // declaring Buzzer pin GPIO
-const int LDR = 23;  // declaring ldr pin GPIO
-
-void setup() 
-  pinMode(Buzzer, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
-  pinMode(LDR, INPUT); // declaring GPIO21 -as an INPUT pin.
-  
+int sensorValue;
+const int buzzer = 26;
+ 
+void setup()
+{
+  Serial.begin(9600); // starts the serial port at 9600
+  pinMode (26,OUTPUT);
 }
-
-void loop() {
-  // put the main code here, to run repeated
-	 int ldrStatus = analogRead(21); //read the ldr status
-
-  if (ldrStatus>= 100) {
-	    tone(Buzzer,100);
-	    delay(100);
-
-	    noTone(Buzzer);
-	    delay(100);
+ 
+void loop()
+{
+  sensorValue = analogRead(23); // read analog input pin 23
+   // We'll have a few threshholds, qualitatively determined
+  if (sensorValue < 150) {
+    Serial.println(" - Very Bright");
+    Serial.print(sensorValue);
+    
+  } else if (sensorValue < 200) {
+    Serial.println(" - Bright");
+    Serial.print(sensorValue);
+  } else if (sensorValue < 500) {
+    Serial.println(" - Normal");
+    Serial.print(sensorValue);
+  } else if (sensorValue < 800) {
+    Serial.println(" - Dim");
+    Serial.print(sensorValue);
+  } else {
+    Serial.println(" - Dark");
+    Serial.print(sensorValue);
+    digitalWrite(26,HIGH);
+    delay(500);
+    digitalWrite(26,LOW);
   }
-  else {
-	    noTone(Buzzer);
-    	    delay(1000);
-	}
+  delay(500);
 }
+
 ```
 
 ## Sketch Explanations
