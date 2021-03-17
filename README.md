@@ -99,7 +99,7 @@ In this exercise, we will use the Buzzer on the board as output where we will pr
 
 1. Connect the wiring on following the wiring diagram below.
 
-![EX2](https://user-images.githubusercontent.com/60383798/109749792-4b563e00-7c16-11eb-8d4d-a027563919eb.png)
+![EX3](https://user-images.githubusercontent.com/60383798/109749859-645eef00-7c16-11eb-9a06-d5dd04b4d193.png)
 
 2. Type this following code and upload to the board.
 
@@ -177,7 +177,7 @@ In this exercise, we will use the Potentiometer as input on the board and LED as
 
 1. Connect the wiring as the following wiring diagram
 
-![EX3](https://user-images.githubusercontent.com/60383798/109749859-645eef00-7c16-11eb-9a06-d5dd04b4d193.png)
+![EX2](https://user-images.githubusercontent.com/60383798/109749792-4b563e00-7c16-11eb-8d4d-a027563919eb.png)
 
 2. Type this following code and upload to the board.
 
