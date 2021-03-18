@@ -149,6 +149,7 @@ const long interval = 1000;  // interval time to buzzer beep 1 second
 In the loop function we want to the interval keep the previousMilis and currentMilis to be 0 second to 1 second and looping whitihn the interval so the buzzer will beep ON and OFF like an alarm sound.
 
 ```Bash
+
 Unsigned long currentMilis = milis();
   if (currentMilis – previousMilis >= interval){
 	previousMilis = currentMilis;
@@ -160,8 +161,7 @@ Unsigned long currentMilis = milis();
   }
 
 	digitalWrite(buzzer, buzzerState);
-	!
-
+ }
 ```
 
 ## Flowchart Explanation
@@ -241,8 +241,7 @@ This is the variable floatmap operational that set the statement condition.
 
 ## Flowchart Explanation
 
-![ex3f](https://user-images.githubusercontent.com/60383798/109740714-b0a23300-7c06-11eb-8b31-eeaec5864f3e.PNG)
-
+![flow3](https://user-images.githubusercontent.com/60383798/111567876-a4a79b00-87da-11eb-9ac8-8a42cf9a4d67.PNG)
 
 # EXERCISE 4 :  LDR - Buzzer  ( Light Sensor ) 
 
