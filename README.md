@@ -268,11 +268,10 @@ void setup()
 void loop()
 {
   sensorValue = analogRead(23); // read analog input pin 23
-   // We'll have a few threshholds, qualitatively determined
+
   if (sensorValue < 150) {
     Serial.println(" - Very Bright");
-    Serial.print(sensorValue);
-    
+    Serial.print(sensorValue);    
   } else if (sensorValue < 200) {
     Serial.println(" - Bright");
     Serial.print(sensorValue);
@@ -296,20 +295,49 @@ void loop()
 
 ## Sketch Explanations
 
-The buzzer and LDR are declared for each GPIO pin using variable int.
+The buzzer used GPIO pin 26 and variable name sensorValue with int type is declared.
 
 ```Bash
-const int Buzzer = 21;  // declaring Buzzer pin GPIO
-const int LDR = 23;  // declaring ldr pin GPIO
+int sensorValue;
+const int buzzer = 26;
 ```
-Then, we declare the Buzzer as OUTPUT and LDR as INPUT.
+Then, we declare the Buzzer in pin 26 as OUTPUT and start the serial port at 9600
 
 ```Bash
-pinMode(Buzzer, OUTPUT); // declaring GPIO23 –as an OUTPUT pin.
-pinMode(LDR, INPUT); // declaring GPIO21 -as an INPUT pin.
+Serial.begin(9600); // starts the serial port at 9600
+pinMode (26,OUTPUT);
 ```
-We use analogRead() to read the ldrStatus. Where, when the LDR measure the intensity of the light it received. We use if-else statement to determine the condition where the ldrStatus 	reach >=100 and the buzzer will beep and go off for each 0,1 second gap. We use tone and noTone fuction to make the buzzer on and off with the delay. If ldrStatus <=100, then the buzzer will remain off state.
-	
+Using the variable sensorValue, the LDR pin 23 is read
+
+```Bash
+sensorValue = analogRead(23); // read analog input pin 23
+```
+
+This if-else selection set the conditions and statements to be executed. For example, when the sensorValue <150 , then it will print in the serial monitor the value with the message "Very Bright". Same goes with other conditions, except when the sensorValue => to 800, then the buzzer will turn ON for 0.5 second and OFF and again continue reading the sensorValue.
+
+```Bash
+ if (sensorValue < 150) {
+    Serial.println(" - Very Bright");
+    Serial.print(sensorValue);    
+  } else if (sensorValue < 200) {
+    Serial.println(" - Bright");
+    Serial.print(sensorValue);
+  } else if (sensorValue < 500) {
+    Serial.println(" - Normal");
+    Serial.print(sensorValue);
+  } else if (sensorValue < 800) {
+    Serial.println(" - Dim");
+    Serial.print(sensorValue);
+  } else {
+    Serial.println(" - Dark");
+    Serial.print(sensorValue);
+    digitalWrite(26,HIGH);
+    delay(500);
+    digitalWrite(26,LOW);
+  }
+  delay(500);
+```
+
 ## Flowchart Explanation
 
 ![exp4](https://user-images.githubusercontent.com/60383798/109742682-79ce1c00-7c0a-11eb-80c8-5f007f8ef25b.PNG)
