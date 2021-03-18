@@ -241,7 +241,7 @@ This is the variable floatmap operational that set the statement condition.
 
 ## Flowchart Explanation
 
-![flow3](https://user-images.githubusercontent.com/60383798/111567876-a4a79b00-87da-11eb-9ac8-8a42cf9a4d67.PNG)
+![newf](https://user-images.githubusercontent.com/60383798/111568073-0b2cb900-87db-11eb-8b1f-fed4f4903ae1.PNG)
 
 # EXERCISE 4 :  LDR - Buzzer  ( Light Sensor ) 
 
